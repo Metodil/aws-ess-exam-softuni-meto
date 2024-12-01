@@ -19,7 +19,8 @@ resource "aws_sns_topic" "sns_topic_ec2" {
 resource "aws_sns_topic_subscription" "email_subscription_ec2" {
   topic_arn = aws_sns_topic.sns_topic_ec2.arn
   protocol  = "email"
-  endpoint  = "metodil@hotmail.com"
+  endpoint  = "hristo.zhelev@yahoo.com"
+#  endpoint  = "metodil@hotmail.com"
 }
 
 # database for storing meta info
