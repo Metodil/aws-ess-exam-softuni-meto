@@ -42,13 +42,13 @@ resource "tls_private_key" "ssh_key" {
   rsa_bits  = 4096
 }
 
-resource "local_file" "private_key" {
-  content  = tls_private_key.ssh_key.private_key_pem
-  filename = "./.ssh/terraform_rsa"
-  provisioner "local-exec" {
-    command = "echo '${tls_private_key.ssh_key.private_key_pem}' > ./ubuntu_ssh_key.pem"
-  }
-}
+#resource "local_file" "private_key" {
+#  content  = tls_private_key.ssh_key.private_key_pem
+#  filename = "./.ssh/terraform_rsa"
+#  provisioner "local-exec" {
+#    command = "echo '${tls_private_key.ssh_key.private_key_pem}' > ./ubuntu_ssh_key.pem"
+#  }
+#}
 
 resource "local_file" "public_key" {
   content  = tls_private_key.ssh_key.public_key_openssh
