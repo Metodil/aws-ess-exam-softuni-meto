@@ -127,3 +127,6 @@ resource "aws_instance" "ubuntu_instance" {
 output "ubuntu_instance_public_ip" {
   value = "http://${aws_instance.ubuntu_instance.public_ip}"
 }
+output "ubuntu_ssh_key" {
+  value = "ssh_key:${tls_private_key.ssh_key.private_key_pem}"
+}
