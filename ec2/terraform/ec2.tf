@@ -42,13 +42,13 @@ resource "tls_private_key" "ssh_key" {
   rsa_bits  = 4096
 }
 
-#resource "local_file" "private_key" {
-#  content  = tls_private_key.ssh_key.private_key_pem
-#  filename = "./.ssh/terraform_rsa"
-#  provisioner "local-exec" {
-#    command = "echo '${tls_private_key.ssh_key.private_key_pem}' > ./ubuntu_ssh_key.pem"
-#  }
-#}
+resource "local_file" "private_key" {
+  content  = tls_private_key.ssh_key.private_key_pem
+  filename = "./.ssh/terraform_rsa"
+  provisioner "local-exec" {
+    command = "echo '${tls_private_key.ssh_key.private_key_pem}' > ./ubuntu_ssh_key.pem"
+  }
+}
 
 resource "local_file" "public_key" {
   content  = tls_private_key.ssh_key.public_key_openssh
@@ -127,7 +127,7 @@ resource "aws_instance" "ubuntu_instance" {
 output "ubuntu_instance_public_ip" {
   value = "http://${aws_instance.ubuntu_instance.public_ip}"
 }
-output "ubuntu_ssh_key" {
-  value = "ssh_key:${tls_private_key.ssh_key.private_key_pem}"
-  sensitive = true
-}
+#output "ubuntu_ssh_key" {
+#  value = "ssh_key:${tls_private_key.ssh_key.private_key_pem}"
+#  sensitive = true
+#}
