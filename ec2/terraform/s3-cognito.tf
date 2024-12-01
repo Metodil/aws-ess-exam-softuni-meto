@@ -106,6 +106,10 @@ resource "aws_iam_role_policy" "web_iam_unauth_role_policy" {
       })
 }
 
+output "cognito-id-web" {
+  value = "CONGNITO_IP_ID=${aws_cognito_identity_pool.upload-s3.id}"
+}
+
 resource "terraform_data" "set-cognito-id-web" {
   provisioner "local-exec" {
     command = "CONGNITO_IP_ID=${aws_cognito_identity_pool.upload-s3.id}"

@@ -22,7 +22,7 @@ echo '<!DOCTYPE html>
 echo "// Configure the AWS SDK
 AWS.config.region = 'eu-central-1';
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: '${CONGNITO_IP_ID}'
+    IdentityPoolId: '<IdentityPoolId>'
 });
 
 // Create an S3 client
@@ -58,7 +58,5 @@ document.getElementById('upload-form').addEventListener('submit', (event) => {
 # Update NGINX to listen on port 8080
 #sudo sed -i 's/'exam/{file.name}'/`exam/${file.name}`/g' /var/www/html/app.js
 # Restart NGINX to apply the changes
-
-#sudo sed -i 's/IdentityPoolId: 'eu-central-1:13ca429c-2d8e-43c6-9a0b-fc74ec03e19a-meto' /var/www/html/app.js
 
 sudo systemctl restart nginx
